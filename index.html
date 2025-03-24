@@ -1,55 +1,322 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-        <link rel="stylesheet" href="styles.css" />
-        <script src="script.js"></script>
-        <style>
-            body {
-                background-color: #ffebcd;
-            }
-        </style>
-    </head>
-    <body>
-        <h1 style="text-align: center">Yash Kantheti</h1>
-        <img src="yash_image.jpg" height="200" style="display: block; margin: 0 auto" />
-        <h3>About me:</h3>
-        <p>
-            Student at Virginia Tech majoring in computer science with a focus on cybersecurity and minor in national
-            security.
-        </p>
-        <p>
-            Experienced in
-            <a href="https://www.cisco.com/c/en/us/products/ios-nx-os-software/index.html">CISCO </a>
-            networking, obtained professional certificate. Worked as network engineer using network tools to improve
-            network efficiency and customer satisfaction. Implemented secure network configurations, conducted
-            vulnerability assessments, and deployed strategic solutions to enhance network reliability and performance.
-            Collaborated with cross-functional teams to troubleshoot complex issues and design resilient infrastructure
-            that meets both operational and security requirements.
-        </p>
-        <p>
-            Obtained comprehensive knowledge and practical experience related to software design principles,
-            cybersecurity risk management frameworks, and information security law. Active participant in
-            capture-the-flag competitions and security communities to stay current with emerging threats and defensive
-            techniques.
-        </p>
-        <p>Achievements:</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">YN</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
-        <ul>
-            <li>Programming Languages Known: Java, Lua, Python, JavaScript</li>
-            <li>Deloitte CTF participant finishing top 10%</li>
-            <li><a href="https://www.uscyberpatriot.org">CyberPatriot</a> platinum and gold semi-final qualifier</li>
-        </ul>
-        <h3>Career Goal:</h3>
-        <p>
-            Obtain the skills, knowledge, and training needed to implement technical expertise with governance
-            principles to shape a responsible and innovative cybersecurity environment that protects national security
-            interests and superiority in a dynamic digital landscape.
-        </p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span class="highlight">Your Name</span></h1>
+                <h2>CS Student & Developer</h2>
+                <p>Building tomorrow's technology today</p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+                <div class="hero-social">
+                    <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <a href="#about">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+            </a>
+        </div>
+    </section>
 
-        <h4>Contact Me:</h4>
-        <a href="yashk@vt.edu">Email</a>
-        <a href="https://www.linkedin.com/in/yashkantheti/">LinkedIn</a>
-    </body>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm a first-year Computer Science student passionate about building digital experiences that are both functional and beautiful. My journey in programming began with Java, and I'm expanding my skills into web development and other areas.</p>
+                    <p>Currently, I'm focused on creating projects that solve real problems while helping me grow as a developer. I believe in continuous learning and pushing my boundaries with each new challenge.</p>
+                    <a href="#" class="btn btn-outline">Download Resume</a>
+                </div>
+                <div class="about-details">
+                    <div class="detail-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <h3>Education</h3>
+                            <p>Bachelor of Science in Computer Science</p>
+                            <p>Your University • 2024–Present</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-code"></i>
+                        <div>
+                            <h3>Current Focus</h3>
+                            <p>Java Programming</p>
+                            <p>Web Development</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-laptop"></i>
+                        <div>
+                            <h3>Goals</h3>
+                            <p>Building a diverse project portfolio</p>
+                            <p>Contributing to open source</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Skills</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="skills-content">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <h4>Java</h4>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <h4>HTML</h4>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <h4>CSS</h4>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <h4>JavaScript</h4>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-git-alt"></i>
+                            </div>
+                            <h4>Git</h4>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <h4>GitHub</h4>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4>SQL</h4>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <h4>Command Line</h4>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Projects</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://via.placeholder.com/600x400" alt="Project 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Name 1</h3>
+                        <p>A brief description of your first project. Explain what problems it solves and what technologies you used.</p>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>SQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm">View Project</a>
+                            <a href="#" class="btn btn-sm btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://via.placeholder.com/600x400" alt="Project 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Name 2</h3>
+                        <p>A brief description of your second project. Explain what problems it solves and what technologies you used.</p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm">View Project</a>
+                            <a href="#" class="btn btn-sm btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://via.placeholder.com/600x400" alt="Project 3">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Name 3</h3>
+                        <p>A brief description of your third project. Explain what problems it solves and what technologies you used.</p>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>React</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm">View Project</a>
+                            <a href="#" class="btn btn-sm btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>your.email@example.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <p>linkedin.com/in/yourprofile</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <p>github.com/yourusername</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
 </html>
