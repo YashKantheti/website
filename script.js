@@ -1,4 +1,4 @@
-// Portfolio JavaScript with Cybersecurity Features
+// Enhanced Portfolio JavaScript with Cybersecurity Features
 
 document.addEventListener('DOMContentLoaded', function() {
     // Matrix canvas background
@@ -72,8 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let charIndex = 0;
     
     function typeCommand() {
-        if (!typingCommand) return;
-        
         if (charIndex < commands[currentCommand].length) {
             typingCommand.textContent = commands[currentCommand].substring(0, charIndex + 1) + '_';
             charIndex++;
@@ -128,8 +126,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const trackTypes = new Set();
     
     function generateAttack() {
-        if (!attackLog || !attackCount || !countryCount || !typeCount) return;
-        
         const country = countries[Math.floor(Math.random() * countries.length)];
         const attackType = attackTypes[Math.floor(Math.random() * attackTypes.length)];
         const targetType = targetTypes[Math.floor(Math.random() * targetTypes.length)];
@@ -161,16 +157,18 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         
         // Add to log and update stats
-        attackLog.prepend(attackEntry);
-        
-        // Animation for new attacks
-        setTimeout(() => {
-            attackEntry.classList.add('visible');
-        }, 10);
-        
-        // Remove older entries to keep the list manageable
-        if (attackLog.children.length > 10) {
-            attackLog.removeChild(attackLog.lastChild);
+        if (attackLog) {
+            attackLog.prepend(attackEntry);
+            
+            // Animation for new attacks
+            setTimeout(() => {
+                attackEntry.classList.add('visible');
+            }, 10);
+            
+            // Remove older entries to keep the list manageable
+            if (attackLog.children.length > 10) {
+                attackLog.removeChild(attackLog.lastChild);
+            }
         }
         
         totalAttacks++;
@@ -179,23 +177,14 @@ document.addEventListener('DOMContentLoaded', function() {
         showAttackOnMap(country);
         
         // Update stat counters with animation
-        updateCounter(attackCount, totalAttacks);
-        updateCounter(countryCount, trackCountries.size);
-        updateCounter(typeCount, trackTypes.size);
-    }
-    
-    function updateCounter(element, value) {
-        const current = parseInt(element.textContent);
-        if (current !== value) {
-            element.textContent = value;
-            element.classList.add('update');
-            setTimeout(() => {
-                element.classList.remove('update');
-            }, 500);
+        if (attackCount && countryCount && typeCount) {
+            updateCounter(attackCount, totalAttacks);
+            updateCounter(countryCount, trackCountries.size);
+            updateCounter(typeCount, trackTypes.size);
         }
     }
     
-    // Cybersecurity threat map visualization - Enhanced coffee theme
+    // Cybersecurity threat map visualization
     const threatMap = document.getElementById('threat-map');
     
     function initThreatMap() {
@@ -204,20 +193,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Clear any existing content
         threatMap.innerHTML = '';
         
-        // Create map title
-        const mapTitle = document.createElement('div');
-        mapTitle.className = 'map-title';
-        mapTitle.innerHTML = `
-            <span class="title-text">GLOBAL THREAT MONITOR</span>
-            <span class="subtitle">Powered by CoffeeSecure™</span>
-        `;
-        threatMap.appendChild(mapTitle);
-        
         // Create a simple world map using div elements
         const mapContainer = document.createElement('div');
         mapContainer.className = 'map-container';
         
-        // Create map regions with coffee theme
+    // Create map regions (simplified)
         const regions = [
             { name: 'North America', left: '10%', top: '30%', width: '20%', height: '20%', color: 'var(--mocha)' },
             { name: 'South America', left: '25%', top: '55%', width: '15%', height: '25%', color: 'var(--chai)' },
@@ -243,12 +223,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 regionEl.style.borderColor = region.color === 'var(--mocha)' ? 'rgba(90, 77, 65, 0.4)' : 'rgba(126, 105, 87, 0.4)';
             }
             
-            // Add region name
-            const regionName = document.createElement('span');
-            regionName.className = 'region-name';
-            regionName.textContent = region.name;
-            regionEl.appendChild(regionName);
-            
             // Add data attribute for targeting in animations
             regionEl.dataset.region = region.name;
             
@@ -262,14 +236,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const attackOverlay = document.createElement('div');
         attackOverlay.className = 'attack-overlay';
         threatMap.appendChild(attackOverlay);
-        
-        // Add map grid lines
-        const gridLines = document.createElement('div');
-        gridLines.className = 'map-grid';
-        threatMap.appendChild(gridLines);
     }
     
-    // Function to display attack on the map with coffee theme
+    // Function to display attack on the map
     function showAttackOnMap(country) {
         if (!threatMap) return;
         
@@ -320,27 +289,27 @@ document.addEventListener('DOMContentLoaded', function() {
         attackPoint.style.left = `${left}px`;
         attackPoint.style.top = `${top}px`;
         
-        // Add country data
-        attackPoint.dataset.country = country;
-        
         // Animate attack point
         attackOverlay.appendChild(attackPoint);
-        
-        // Make the region briefly highlight
-        regionEl.classList.add('region-active');
-        setTimeout(() => {
-            regionEl.classList.remove('region-active');
-        }, 1000);
         
         // Remove attack point after animation
         setTimeout(() => {
             attackPoint.classList.add('fade-out');
             setTimeout(() => {
-                if (attackPoint.parentNode === attackOverlay) {
-                    attackOverlay.removeChild(attackPoint);
-                }
+                attackOverlay.removeChild(attackPoint);
             }, 1000);
         }, 2000);
+    }
+    
+    function updateCounter(element, value) {
+        const current = parseInt(element.textContent);
+        if (current !== value) {
+            element.textContent = value;
+            element.classList.add('update');
+            setTimeout(() => {
+                element.classList.remove('update');
+            }, 500);
+        }
     }
     
     // Enhanced smooth scroll with offset for fixed header
@@ -607,7 +576,7 @@ document.addEventListener('DOMContentLoaded', function() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             
-            // Reinitialize drops array for matrix effect
+            // Reinitialize drops array
             for (let i = 0; i < columns; i++) {
                 drops[i] = Math.floor(Math.random() * -100);
             }
