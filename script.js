@@ -1,4 +1,4 @@
-// Portfolio JavaScript with Cybersecurity Features
+// Enhanced Portfolio JavaScript with Cybersecurity Features
 
 document.addEventListener('DOMContentLoaded', function() {
     // Matrix canvas background
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     canvas.height = window.innerHeight;
     
     // Characters for the Matrix effect (coffee-themed)
-    const chars = '01JVC0FF33B34N5M0CH4CH41BR3W3SPR3550';
+    const chars = '01JVC0FF33B34N5M0CH4CH41BR3W3SPR3550C0D3H4CK5CRYPT0';
     
     const fontSize = 14;
     const columns = canvas.width / fontSize;
@@ -59,29 +59,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Terminal typing effect
-    const commandText = "view cybersecurity_portfolio.md";
+    // Terminal typing effect with more commands
+    const commands = [
+        "view cybersecurity_portfolio.md",
+        "scan network -v",
+        "analyze vulnerabilities",
+        "cat /etc/security/config",
+        "ssh secure@192.168.1.1"
+    ];
+    let currentCommand = 0;
     const typingCommand = document.querySelector('.typing-command');
     let charIndex = 0;
     
     function typeCommand() {
-        if (charIndex < commandText.length) {
-            typingCommand.textContent = commandText.substring(0, charIndex + 1) + '_';
+        if (charIndex < commands[currentCommand].length) {
+            typingCommand.textContent = commands[currentCommand].substring(0, charIndex + 1) + '_';
             charIndex++;
             setTimeout(typeCommand, 100);
         } else {
-            typingCommand.textContent = commandText;
+            typingCommand.textContent = commands[currentCommand];
             setTimeout(() => {
                 // Clear the command
                 typingCommand.textContent = '';
                 charIndex = 0;
+                // Move to next command
+                currentCommand = (currentCommand + 1) % commands.length;
                 // Start again after pause
                 setTimeout(typeCommand, 2000);
             }, 1500);
         }
     }
     
-    // Cybersecurity threat simulation
+    // Cybersecurity threat simulation with enhanced visuals
     const attackLog = document.getElementById('attack-log');
     const attackCount = document.getElementById('attack-count');
     const countryCount = document.getElementById('country-count');
@@ -91,21 +100,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const countries = [
         'United States', 'Russia', 'China', 'North Korea', 'Iran', 
         'Ukraine', 'Germany', 'Brazil', 'India', 'United Kingdom', 
-        'Canada', 'Australia', 'Japan', 'South Korea', 'Singapore'
+        'Canada', 'Australia', 'Japan', 'South Korea', 'Singapore',
+        'France', 'Israel', 'Vietnam', 'Netherlands', 'Turkey'
     ];
     
     // List of attack types
     const attackTypes = [
         'SQL Injection', 'XSS Attack', 'DDoS', 'Phishing', 'Brute Force', 
         'Ransomware', 'Man-in-the-Middle', 'Zero-day Exploit', 'Malware',
-        'Password Attack', 'DNS Tunneling', 'Session Hijacking'
+        'Password Attack', 'DNS Tunneling', 'Session Hijacking', 'Crypto Mining',
+        'Supply Chain Attack', 'Social Engineering', 'APT', 'Insider Threat'
     ];
     
     // List of target types
     const targetTypes = [
         'Financial Institution', 'Government Agency', 'Healthcare Provider',
         'E-commerce Platform', 'Educational Institution', 'Energy Infrastructure',
-        'Tech Company', 'Media Organization', 'Military Network', 'Transportation System'
+        'Tech Company', 'Media Organization', 'Military Network', 'Transportation System',
+        'Cloud Service', 'Manufacturing Facility', 'Telecom Provider', 'Critical Infrastructure',
+        'Cryptocurrency Exchange', 'IoT Network', 'Satellite Systems'
     ];
     
     let totalAttacks = 0;
@@ -144,23 +157,28 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         
         // Add to log and update stats
-        attackLog.prepend(attackEntry);
-        totalAttacks++;
-        
-        // Animation for new attacks
-        setTimeout(() => {
-            attackEntry.classList.add('visible');
-        }, 10);
-        
-        // Remove older entries to keep the list manageable
-        if (attackLog.children.length > 10) {
-            attackLog.removeChild(attackLog.lastChild);
+        if (attackLog) {
+            attackLog.prepend(attackEntry);
+            
+            // Animation for new attacks
+            setTimeout(() => {
+                attackEntry.classList.add('visible');
+            }, 10);
+            
+            // Remove older entries to keep the list manageable
+            if (attackLog.children.length > 10) {
+                attackLog.removeChild(attackLog.lastChild);
+            }
         }
         
+        totalAttacks++;
+        
         // Update stat counters with animation
-        updateCounter(attackCount, totalAttacks);
-        updateCounter(countryCount, trackCountries.size);
-        updateCounter(typeCount, trackTypes.size);
+        if (attackCount && countryCount && typeCount) {
+            updateCounter(attackCount, totalAttacks);
+            updateCounter(countryCount, trackCountries.size);
+            updateCounter(typeCount, trackTypes.size);
+        }
     }
     
     function updateCounter(element, value) {
@@ -174,6 +192,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Enhanced smooth scroll with offset for fixed header
+    function smoothScroll(target, duration) {
+        const targetElement = document.querySelector(target);
+        if (!targetElement) return;
+        
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const startPosition = window.pageYOffset;
+        const navbarHeight = document.getElementById('navbar').offsetHeight;
+        const distance = targetPosition - startPosition - navbarHeight - 20;
+        let startTime = null;
+        
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = ease(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+        }
+        
+        // Easing function
+        function ease(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+        
+        requestAnimationFrame(animation);
+    }
+    
     // Navigation highlighting and smooth scrolling
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
@@ -183,142 +231,11 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            window.scrollTo({
-                top: targetSection.offsetTop - 70,
-                behavior: 'smooth'
-            });
+            smoothScroll(targetId, 1000);
         });
     });
     
-    // Highlight active navigation link on scroll
-    window.addEventListener('scroll', function() {
-        let current = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (scrollY >= (sectionTop - 100)) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    });
+    // Enhanced scroll animations for elements
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
     
-    // Mobile navigation toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinksContainer = document.querySelector('.nav-links');
-    
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navLinksContainer.classList.toggle('active');
-        
-        // Toggle hamburger animation
-        const bars = document.querySelectorAll('.bar');
-        if (hamburger.classList.contains('active')) {
-            bars[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
-            bars[1].style.opacity = '0';
-            bars[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
-        } else {
-            bars[0].style.transform = 'none';
-            bars[1].style.opacity = '1';
-            bars[2].style.transform = 'none';
-        }
-    });
-    
-    // Close mobile menu when clicking a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navLinksContainer.classList.contains('active')) {
-                hamburger.click();
-            }
-        });
-    });
-    
-    // Form submission handler with encryption simulation
-    const contactForm = document.querySelector('.contact-form');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Simulate encryption (visual effect)
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitButton.innerHTML;
-            
-            submitButton.innerHTML = '<i class="fas fa-lock"></i> Encrypting...';
-            submitButton.disabled = true;
-            
-            // Simulate encryption process
-            setTimeout(() => {
-                submitButton.innerHTML = '<i class="fas fa-check"></i> Message Secured & Sent';
-                
-                // Message confirmation
-                setTimeout(() => {
-                    alert(`Thanks for your encrypted message, ${name}! I'll get back to you soon.`);
-                    contactForm.reset();
-                    submitButton.innerHTML = originalText;
-                    submitButton.disabled = false;
-                }, 2000);
-            }, 2000);
-        });
-    }
-    
-    // Add animation to skill bars when they come into view
-    const skillBars = document.querySelectorAll('.skill-bar');
-    
-    const animateSkillBars = function() {
-        skillBars.forEach(bar => {
-            const barPosition = bar.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.3;
-            
-            if (barPosition < screenPosition) {
-                const skillLevel = bar.getAttribute('data-level');
-                bar.querySelector('.skill-level').style.width = skillLevel;
-            }
-        });
-    };
-    
-    // Start animations and simulations
-    function initializeAnimations() {
-        // Matrix effect
-        setInterval(drawMatrix, 50);
-        
-        // Start typing effect
-        typeCommand();
-        
-        // Generate new attacks every 3-7 seconds
-        setInterval(generateAttack, Math.random() * 4000 + 3000);
-        
-        // Generate initial attacks
-        for (let i = 0; i < 5; i++) {
-            setTimeout(generateAttack, i * 500);
-        }
-        
-        // Initial skill bar animation
-        window.addEventListener('scroll', animateSkillBars);
-        animateSkillBars();
-    }
-    
-    // Initialize after page is fully loaded
-    window.addEventListener('load', initializeAnimations);
-    
-    // Handle window resize for canvas
-    window.addEventListener('resize', function() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
-});
+    function checkAnim
