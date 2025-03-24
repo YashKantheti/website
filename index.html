@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yashwanth Kantheti | Portfolio</title>
+    <title>Yash Kantheti | Cybersecurity Portfolio</title>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts - Elegant serif/sans-serif pairing to match coffee theme -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap">
+    <!-- Google Fonts - Elegant serif/sans-serif pairing -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Matrix Canvas Background -->
+    <canvas id="matrix-canvas"></canvas>
+    
     <!-- Navigation -->
     <nav id="navbar">
         <div class="container">
-            <div class="logo">YK</div>
+            <div class="logo">YK_</div>
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -34,15 +37,39 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Hi, I'm <span class="highlight">Yash Kantheti</span></h1>
-                <h2>CS Student</h2>
-                <p>Discovering elegant computing with passion and technology </p>
+                <div class="terminal-wrapper">
+                    <div class="terminal-header">
+                        <span class="terminal-title">~/yash_kantheti</span>
+                        <div class="terminal-buttons">
+                            <span class="terminal-button red"></span>
+                            <span class="terminal-button yellow"></span>
+                            <span class="terminal-button green"></span>
+                        </div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="line">
+                            <span class="prompt">$</span> <span class="command">whoami</span>
+                        </div>
+                        <div class="line">
+                            <span class="output">Yash Kantheti</span>
+                        </div>
+                        <div class="line">
+                            <span class="prompt">$</span> <span class="command">cat introduction.txt</span>
+                        </div>
+                        <div class="line multiline">
+                            <span class="output">Cybersecurity Specialist & Developer</span>
+                        </div>
+                        <div class="line">
+                            <span class="prompt">$</span> <span class="typing-command">_</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="hero-cta">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
                     <a href="#contact" class="btn btn-secondary">Get In Touch</a>
                 </div>
                 <div class="hero-social">
-                    <a href="https://github.com/YashKantheti" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="https://linkedin.com/in/yashkantheti" target="_blank"><i class="fab fa-linkedin"></i></a>
                     <a href="mailto:yashk@vt.edu"><i class="fas fa-envelope"></i></a>
                 </div>
@@ -66,34 +93,33 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Hello! I'm a first-year Computer Science student passionate about building digital experiences that are both functional and beautiful. My journey in programming began with Java, and I'm expanding my skills into web development and other areas.</p>
-                    <p>Currently, I'm focused on creating projects that solve real problems while helping me grow as a developer. I believe in continuous learning and pushing my boundaries with each new challenge.</p>
+                    <p>Student at Virginia Tech majoring in computer science with a focus on cybersecurity and minor in national security.</p>
+                    <p>Experienced in <a href="https://www.cisco.com/c/en/us/products/ios-nx-os-software/index.html" target="_blank">CISCO</a> networking, obtained professional certificate. Worked as network engineer using network tools to improve network efficiency and customer satisfaction. Implemented secure network configurations, conducted vulnerability assessments, and deployed strategic solutions to enhance network reliability and performance. Collaborated with cross-functional teams to troubleshoot complex issues and design resilient infrastructure that meets both operational and security requirements.</p>
+                    <p>Obtained comprehensive knowledge and practical experience related to software design principles, cybersecurity risk management frameworks, and information security law. Active participant in capture-the-flag competitions and security communities to stay current with emerging threats and defensive techniques.</p>
                     <a href="#" class="btn btn-outline">Download Resume</a>
                 </div>
                 <div class="about-details">
                     <div class="detail-item">
+                        <i class="fas fa-flag-checkered"></i>
+                        <div>
+                            <h3>Career Goal</h3>
+                            <p>Obtain the skills, knowledge, and training needed to implement technical expertise with governance principles to shape a responsible and innovative cybersecurity environment that protects national security interests and superiority in a dynamic digital landscape.</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-trophy"></i>
+                        <div>
+                            <h3>Achievements</h3>
+                            <p>Deloitte CTF participant finishing top 10%</p>
+                            <p><a href="https://www.uscyberpatriot.org" target="_blank">CyberPatriot</a> platinum and gold semi-final qualifier</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
                         <i class="fas fa-graduation-cap"></i>
                         <div>
                             <h3>Education</h3>
-                            <p>Bachelor of Science in Computer Science</p>
-                            <p>Secure Computing Major<P>
-                            <p>Virginia Tech • 2024–Present</p>
-                        </div>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-code"></i>
-                        <div>
-                            <h3>Current Focus</h3>
-                            <p>Java Programming</p>
-                            <p>Development</p>
-                        </div>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-laptop"></i>
-                        <div>
-                            <h3>Goals</h3>
-                            <p></p>
-                            <p>Contributing to open source</p>
+                            <p>B.S. Computer Science with Cybersecurity Focus</p>
+                            <p>Virginia Tech • Current</p>
                         </div>
                     </div>
                 </div>
@@ -123,18 +149,9 @@
                         </div>
                         <div class="skill-item">
                             <div class="skill-icon">
-                                <i class="fab fa-html5"></i>
+                                <i class="fab fa-python"></i>
                             </div>
-                            <h4>HTML</h4>
-                            <div class="skill-bar" data-level="90%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-css3-alt"></i>
-                            </div>
-                            <h4>CSS</h4>
+                            <h4>Python</h4>
                             <div class="skill-bar" data-level="80%">
                                 <div class="skill-level" style="width: 0%"></div>
                             </div>
@@ -148,35 +165,44 @@
                                 <div class="skill-level" style="width: 0%"></div>
                             </div>
                         </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h4>Lua</h4>
+                            <div class="skill-bar" data-level="65%">
+                                <div class="skill-level" style="width: 0%"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Tools & Technologies</h3>
+                    <h3>Cybersecurity & Tools</h3>
                     <div class="skill-grid">
                         <div class="skill-item">
                             <div class="skill-icon">
-                                <i class="fab fa-git-alt"></i>
+                                <i class="fas fa-network-wired"></i>
                             </div>
-                            <h4>Git</h4>
+                            <h4>CISCO Networking</h4>
+                            <div class="skill-bar" data-level="90%">
+                                <div class="skill-level" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Security Assessments</h4>
+                            <div class="skill-bar" data-level="85%">
+                                <div class="skill-level" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-bug"></i>
+                            </div>
+                            <h4>Penetration Testing</h4>
                             <div class="skill-bar" data-level="75%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <h4>GitHub</h4>
-                            <div class="skill-bar" data-level="80%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <h4>SQL</h4>
-                            <div class="skill-bar" data-level="65%">
                                 <div class="skill-level" style="width: 0%"></div>
                             </div>
                         </div>
@@ -184,8 +210,8 @@
                             <div class="skill-icon">
                                 <i class="fas fa-terminal"></i>
                             </div>
-                            <h4>Command Line</h4>
-                            <div class="skill-bar" data-level="70%">
+                            <h4>CTF Competitions</h4>
+                            <div class="skill-bar" data-level="80%">
                                 <div class="skill-level" style="width: 0%"></div>
                             </div>
                         </div>
@@ -206,17 +232,18 @@
                 <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://via.placeholder.com/600x400" alt="Project 1">
+                        <img src="https://via.placeholder.com/600x400" alt="Network Security Project">
                     </div>
                     <div class="project-content">
-                        <h3>Project Name 1</h3>
-                        <p>A brief description of your first project. Explain what problems it solves and what technologies you used.</p>
+                        <h3>Network Security Assessment</h3>
+                        <p>A comprehensive security assessment of enterprise network infrastructure identifying vulnerabilities and providing remediation strategies.</p>
                         <div class="project-tech">
-                            <span>Java</span>
-                            <span>SQL</span>
+                            <span>CISCO</span>
+                            <span>Python</span>
+                            <span>Security</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn btn-sm">View Project</a>
+                            <a href="#" class="btn btn-sm">View Details</a>
                             <a href="#" class="btn btn-sm btn-outline">GitHub</a>
                         </div>
                     </div>
@@ -224,18 +251,18 @@
                 <!-- Project 2 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://via.placeholder.com/600x400" alt="Project 2">
+                        <img src="https://via.placeholder.com/600x400" alt="CTF Challenge">
                     </div>
                     <div class="project-content">
-                        <h3>Project Name 2</h3>
-                        <p>A brief description of your second project. Explain what problems it solves and what technologies you used.</p>
+                        <h3>CTF Challenge Platform</h3>
+                        <p>Developed a platform for hosting Capture The Flag cybersecurity challenges with real-time scoring and interactive learning components.</p>
                         <div class="project-tech">
-                            <span>HTML</span>
-                            <span>CSS</span>
+                            <span>Java</span>
                             <span>JavaScript</span>
+                            <span>Docker</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn btn-sm">View Project</a>
+                            <a href="#" class="btn btn-sm">View Details</a>
                             <a href="#" class="btn btn-sm btn-outline">GitHub</a>
                         </div>
                     </div>
@@ -243,18 +270,57 @@
                 <!-- Project 3 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://via.placeholder.com/600x400" alt="Project 3">
+                        <img src="https://via.placeholder.com/600x400" alt="Threat Analysis">
                     </div>
                     <div class="project-content">
-                        <h3>Project Name 3</h3>
-                        <p>A brief description of your third project. Explain what problems it solves and what technologies you used.</p>
+                        <h3>Threat Intelligence Dashboard</h3>
+                        <p>Created a dashboard for monitoring and analyzing real-time cybersecurity threats using data visualization and machine learning.</p>
                         <div class="project-tech">
-                            <span>Java</span>
+                            <span>Python</span>
+                            <span>ML</span>
                             <span>React</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn btn-sm">View Project</a>
+                            <a href="#" class="btn btn-sm">View Details</a>
                             <a href="#" class="btn btn-sm btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Security Feed Section -->
+    <section id="security-feed" class="security-feed">
+        <div class="container">
+            <div class="section-header">
+                <h2>Live Security Feed</h2>
+                <div class="underline"></div>
+                <p class="section-description">Real-time visualization of global cyber threats and attacks</p>
+            </div>
+            <div class="cybersecurity-visualizer">
+                <div class="visualizer-header">
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-value" id="attack-count">0</span>
+                            <span class="stat-label">Attacks Detected</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="country-count">0</span>
+                            <span class="stat-label">Countries</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="type-count">0</span>
+                            <span class="stat-label">Attack Types</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="visualizer-container">
+                    <div id="threat-map"></div>
+                    <div class="attack-log">
+                        <h3>Recent Attacks</h3>
+                        <div class="log-container" id="attack-log">
+                            <!-- Attack logs will be added here by JavaScript -->
                         </div>
                     </div>
                 </div>
@@ -272,15 +338,15 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Let's Connect</h3>
-                    <p>I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!</p>
+                    <p>I'm always interested in hearing about new projects, opportunities, and cybersecurity challenges. Whether you have a question or just want to say hi, feel free to reach out!</p>
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <p>your.email@example.com</p>
+                            <p>yashk@vt.edu</p>
                         </div>
                         <div class="contact-item">
                             <i class="fab fa-linkedin"></i>
-                            <p>linkedin.com/in/yourprofile</p>
+                            <p>linkedin.com/in/yashkantheti</p>
                         </div>
                         <div class="contact-item">
                             <i class="fab fa-github"></i>
@@ -289,6 +355,10 @@
                     </div>
                 </div>
                 <form class="contact-form">
+                    <div class="ssh-key-header">
+                        <i class="fas fa-key"></i> 
+                        <span>Encrypted Message</span>
+                    </div>
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
@@ -301,7 +371,9 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-lock"></i> Send Secure Message
+                    </button>
                 </form>
             </div>
         </div>
@@ -310,11 +382,11 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Your Name. All rights reserved.</p>
+            <p>&copy; 2025 Yash Kantheti. All rights reserved.</p>
             <div class="footer-social">
                 <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/yashkantheti" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:yashk@vt.edu"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
     </footer>
