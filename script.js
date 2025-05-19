@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fontSize = 14;
     const columns = canvas.width / fontSize;
     
-    // Array to store the Y position of each column
+    // Array to store the  position of each column
     const drops = [];
     
     // Initialize drops at random positions above the screen
