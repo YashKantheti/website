@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             country: "France",
-            attackType: "APT",
+            attackType: "ATP",
             targetType: "Telecom Provider",
             severity: 7,
             time: () => new Date().toLocaleTimeString()
