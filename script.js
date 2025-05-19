@@ -238,4 +238,152 @@ document.addEventListener('DOMContentLoaded', function() {
     // Enhanced scroll animations for elements
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     
-    function checkAnim
+    function checkAnimation() {
+        const triggerBottom = window.innerHeight * 0.8;
+        
+        animatedElements.forEach(element => {
+            const box = element.getBoundingClientRect();
+            if (box.top < triggerBottom) {
+                element.classList.add('show');
+            } else {
+                element.classList.remove('show');
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', checkAnimation);
+    checkAnimation();
+    
+    // Start the Matrix effect animation
+    setInterval(drawMatrix, 50);
+    
+    // Start the terminal typing effect
+    typeCommand();
+    
+    // --- Replace the random attack simulation with a "made up but realistic" feed ---
+    // Simulated up-to-date network threat feed (fictional, but looks real)
+    const simulatedThreats = [
+        {
+            country: "Russia",
+            attackType: "Zero-day Exploit",
+            targetType: "Financial Institution",
+            severity: 9,
+            time: () => new Date().toLocaleTimeString()
+        },
+        {
+            country: "China",
+            attackType: "DDoS",
+            targetType: "Government Agency",
+            severity: 8,
+            time: () => new Date().toLocaleTimeString()
+        },
+        {
+            country: "United States",
+            attackType: "Phishing",
+            targetType: "Healthcare Provider",
+            severity: 6,
+            time: () => new Date().toLocaleTimeString()
+        },
+        {
+            country: "Iran",
+            attackType: "Ransomware",
+            targetType: "Energy Infrastructure",
+            severity: 10,
+            time: () => new Date().toLocaleTimeString()
+        },
+        {
+            country: "North Korea",
+            attackType: "Brute Force",
+            targetType: "Military Network",
+            severity: 7,
+            time: () => new Date().toLocaleTimeString()
+        },
+        {
+            country: "Brazil",
+            attackType: "SQL Injection",
+            targetType: "E-commerce Platform",
+            severity: 5,
+            time: () => new Date().toLocaleTimeString()
+        },
+        {
+            country: "India",
+            attackType: "Malware",
+            targetType: "Cloud Service",
+            severity: 6,
+            time: () => new Date().toLocaleTimeString()
+        },
+        {
+            country: "Germany",
+            attackType: "Supply Chain Attack",
+            targetType: "Manufacturing Facility",
+            severity: 8,
+            time: () => new Date().toLocaleTimeString()
+        },
+        {
+            country: "France",
+            attackType: "APT",
+            targetType: "Telecom Provider",
+            severity: 7,
+            time: () => new Date().toLocaleTimeString()
+        },
+        {
+            country: "Turkey",
+            attackType: "Social Engineering",
+            targetType: "Educational Institution",
+            severity: 4,
+            time: () => new Date().toLocaleTimeString()
+        }
+    ];
+
+    let threatIndex = 0;
+    let madeUpTotalAttacks = 0;
+    const madeUpCountries = new Set();
+    const madeUpTypes = new Set();
+
+    function showSimulatedThreat() {
+        const threat = simulatedThreats[threatIndex % simulatedThreats.length];
+        threatIndex++;
+
+        madeUpCountries.add(threat.country);
+        madeUpTypes.add(threat.attackType);
+
+        const attackEntry = document.createElement('div');
+        attackEntry.className = 'attack-entry';
+
+        let severityClass = 'low';
+        if (threat.severity > 7) severityClass = 'high';
+        else if (threat.severity > 4) severityClass = 'medium';
+
+        attackEntry.innerHTML = `
+            <div class="attack-time">${threat.time()}</div>
+            <div class="attack-details">
+                <span class="attack-source">${threat.country}</span>
+                <span class="attack-type">${threat.attackType}</span>
+                <span class="attack-target">${threat.targetType}</span>
+                <span class="attack-severity ${severityClass}">[Severity: ${threat.severity}/10]</span>
+            </div>
+        `;
+
+        if (attackLog) {
+            attackLog.prepend(attackEntry);
+            setTimeout(() => {
+                attackEntry.classList.add('visible');
+            }, 10);
+            if (attackLog.children.length > 10) {
+                attackLog.removeChild(attackLog.lastChild);
+            }
+        }
+
+        madeUpTotalAttacks++;
+        if (attackCount && countryCount && typeCount) {
+            updateCounter(attackCount, madeUpTotalAttacks);
+            updateCounter(countryCount, madeUpCountries.size);
+            updateCounter(typeCount, madeUpTypes.size);
+        }
+    }
+
+    // Replace the old simulation with the new one
+    setInterval(showSimulatedThreat, 3500);
+    // Show a few on load
+    for (let i = 0; i < 3; i++) showSimulatedThreat();
+});
