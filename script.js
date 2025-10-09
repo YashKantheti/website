@@ -1,6 +1,35 @@
 // Enhanced Portfolio JavaScript with Cybersecurity Features
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference or default to dark mode
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    if (currentTheme === 'light') {
+        body.classList.add('light-theme');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+    
+    // Theme toggle click handler
+    themeToggle.addEventListener('click', function() {
+        body.classList.toggle('light-theme');
+        
+        // Update icon
+        if (body.classList.contains('light-theme')) {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+            localStorage.setItem('theme', 'light');
+        } else {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+
     // Matrix canvas background
     const canvas = document.getElementById('matrix-canvas');
     const ctx = canvas.getContext('2d');
@@ -369,7 +398,8 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 attackEntry.classList.add('visible');
             }, 10);
-            if (attackLog.children.length > 10) {
+            // Show more entries - increase from 10 to 15
+            if (attackLog.children.length > 15) {
                 attackLog.removeChild(attackLog.lastChild);
             }
         }
@@ -382,8 +412,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Replace the old simulation with the new one
-    setInterval(showSimulatedThreat, 3500);
-    // Show a few on load
-    for (let i = 0; i < 3; i++) showSimulatedThreat();
+    // Combined function to show threat in log
+    function showThreatWithMap() {
+        showSimulatedThreat();
+    }
+
+    // Start the simulation
+    setInterval(showThreatWithMap, 2500); // Faster interval for more activity
+    
+    // Show more on load for better initial display
+    for (let i = 0; i < 5; i++) {
+        showThreatWithMap();
+    }
 });
