@@ -1069,9 +1069,11 @@ body.light-theme .stat-item {
     padding: 25px;
     border-left: 3px solid var(--chai);
     box-shadow: var(--shadow);
-    min-height: 500px;
+    height: 500px;
+    max-height: 500px;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 }
 
 body.light-theme .attack-log {
