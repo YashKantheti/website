@@ -263,6 +263,7 @@ body.light-theme #navbar {
     justify-content: space-between;
     align-items: center;
     padding: 20px 15px;
+    gap: 20px;
 }
 
 .logo {
@@ -334,6 +335,22 @@ body.light-theme #navbar {
     color: var(--bg-color);
     transform: rotate(180deg);
     box-shadow: var(--glow);
+}
+
+/* Hamburger Menu - Hidden by default */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    margin-left: 15px;
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--chai);
+    transition: var(--transition);
 }
 
 /* Terminal Effect in Hero Section */
@@ -1006,9 +1023,8 @@ body.light-theme .stat-item {
 }
 
 .visualizer-container {
-    display: grid;
-    grid-template-columns: 1fr 350px;
-    gap: 30px;
+    display: block;
+    width: 100%;
     margin-top: 40px;
 }
 
@@ -1053,7 +1069,7 @@ body.light-theme .stat-item {
     padding: 25px;
     border-left: 3px solid var(--chai);
     box-shadow: var(--shadow);
-    height: 450px;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
 }
@@ -1235,16 +1251,15 @@ body.light-theme .attack-entry {
     display: flex;
     align-items: center;
     gap: 20px;
-    padding: 20px;
+    padding: 20px 30px;
     border-radius: 8px;
     transition: var(--transition);
     background-color: rgba(48, 48, 49, 0.3);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     box-shadow: var(--shadow);
-    width: 100%;
-    max-width: 400px;
-    min-width: 350px;
+    width: 400px;
+    justify-content: flex-start;
 }
 
 .contact-item:hover {

@@ -3,19 +3,38 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Theme Toggle Functionality
     const themeToggle = document.getElementById('theme-toggle');
+    
+    if (!themeToggle) {
+        console.error('Theme toggle button not found');
+        return;
+    }
+    
     const body = document.body;
     const themeIcon = themeToggle.querySelector('i');
     
+    if (!themeIcon) {
+        console.error('Theme icon not found');
+        return;
+    }
+    
     // Check for saved theme preference or default to dark mode
     const currentTheme = localStorage.getItem('theme') || 'dark';
+    
+    // Apply theme
     if (currentTheme === 'light') {
         body.classList.add('light-theme');
         themeIcon.classList.remove('fa-sun');
         themeIcon.classList.add('fa-moon');
+    } else {
+        // Ensure dark mode is set
+        body.classList.remove('light-theme');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
     }
     
     // Theme toggle click handler
-    themeToggle.addEventListener('click', function() {
+    themeToggle.addEventListener('click', function(e) {
+        e.preventDefault();
         body.classList.toggle('light-theme');
         
         // Update icon
