@@ -7,7 +7,7 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts - Premium combination -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -97,10 +97,10 @@
             </div>
             <div class="about-content">
                 <div class="about-text animate-on-scroll">
-                    <p>I'm a Computer Science student at Virginia Tech with a focus on cybersecurity and a minor in national security, passionate about developing secure systems and protecting digital infrastructures.</p>
-                    <p>Experienced in CISCO networking with professional certification. My work as a network engineer has involved improving network efficiency and customer satisfaction through secure network configurations, vulnerability assessments, and strategic solutions to enhance reliability and performance.</p>
-                    <p>I've acquired comprehensive knowledge in software design principles, cybersecurity risk management frameworks, and information security law. As an active participant in capture-the-flag competitions and security communities, I stay current with emerging threats and defensive techniques.</p>
-                    <a href="#" class="btn btn-outline">Download Resume</a>
+                    <p>I'm a Computer Science student at Virginia Tech with a focus on cybersecurity and a minor in National Security &amp; Foreign Affairs, passionate about building secure systems at the intersection of technology and national security.</p>
+                    <p>Currently an Undergraduate Researcher at the Hume National Security Center, where I work on the Ut-ProSat II mission researching synthetic aperture radar systems for lunar surface deployment. Previously a Network Support Engineer at Halvex Inc., where I monitored 40+ enterprise networks and assisted 25+ customers with cloud and network deployments.</p>
+                    <p>I've collaborated directly with the U.S. Air Force through Hacking for Defense, built AI-powered security tools, and stay sharp competing in CTFs and participating in Cyber VT and AVUSI.</p>
+                    <a href="resume.pdf" download class="btn btn-outline">Download Resume</a>
                 </div>
                 <div class="about-details">
                     <div class="detail-item animate-on-scroll">
@@ -114,7 +114,8 @@
                         <i class="fas fa-trophy"></i>
                         <div>
                             <h3>Achievements</h3>
-                            <p>Deloitte CTF participant finishing in the top 30%</p>
+                            <p>Presented at Hume NSC Colloquium 2026</p>
+                            <p>Deloitte CTF — top 30% finish</p>
                             <p>CyberPatriot platinum and gold semi-final qualifier</p>
                         </div>
                     </div>
@@ -122,8 +123,9 @@
                         <i class="fas fa-graduation-cap"></i>
                         <div>
                             <h3>Education</h3>
-                            <p>B.S. Computer Science</p>
-                            <p>Virginia Tech 2024 - Present</p>
+                            <p>B.S. Computer Science — Virginia Tech</p>
+                            <p>Expected Dec. 2027 · Dean's List</p>
+                            <p>Minor: National Security &amp; Foreign Affairs</p>
                         </div>
                     </div>
                 </div>
@@ -171,19 +173,19 @@
                         </div>
                         <div class="skill-item">
                             <div class="skill-icon">
-                                <i class="fas fa-code"></i>
+                                <i class="fab fa-c"></i>
                             </div>
-                            <h4>Lua</h4>
-                            <div class="skill-bar" data-level="65%">
+                            <h4>C</h4>
+                            <div class="skill-bar" data-level="70%">
                                 <div class="skill-level" style="width: 0%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
                             <div class="skill-icon">
-                                <i class="fab fa-c"></i>
+                                <i class="fas fa-microchip"></i>
                             </div>
-                            <h4>C</h4>
-                            <div class="skill-bar" data-level="70%">
+                            <h4>Assembly</h4>
+                            <div class="skill-bar" data-level="55%">
                                 <div class="skill-level" style="width: 0%"></div>
                             </div>
                         </div>
@@ -228,6 +230,24 @@
                                 <div class="skill-level" style="width: 0%"></div>
                             </div>
                         </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <h4>React / Next.js</h4>
+                            <div class="skill-bar" data-level="75%">
+                                <div class="skill-level" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h4>AI/ML Integration</h4>
+                            <div class="skill-bar" data-level="80%">
+                                <div class="skill-level" style="width: 0%"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -242,6 +262,39 @@
                 <p class="section-description">Featured work showcasing my technical abilities.</p>
             </div>
             <div class="projects-grid">
+                <!-- AGE Scout -->
+                <div class="project-card animate-on-scroll">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="AGE Scout USAF">
+                    </div>
+                    <div class="project-content">
+                        <h3>AGE Scout — USAF Hacking for Defense</h3>
+                        <p>Collaborated with the U.S. Air Force to modernize aerospace ground equipment identification processes. Built a full-stack mobile web app with an AI vision pipeline that identifies ground equipment from camera captures, extracting NSN, CAGE codes, alternative parts, and applicable technical orders in real time. Conducted 80+ stakeholder interviews across the DoD to drive mission requirements.</p>
+                        <div class="project-tech">
+                            <span>Next.js</span>
+                            <span>React</span>
+                            <span>TypeScript</span>
+                            <span>AI Vision</span>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Security Log Analyzer -->
+                <div class="project-card animate-on-scroll">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Security Log Analyzer">
+                    </div>
+                    <div class="project-content">
+                        <h3>Security Log Analyzer</h3>
+                        <p>Full-stack threat detection tool using FastAPI and Claude that analyzes uploaded log files and maps findings to real MITRE ATT&CK techniques with validated IDs and URLs. Features a chunked pipeline supporting files up to 50MB with overlap-aware splitting, using the MITRE attack-python STIX library to dynamically build AI prompts from live ATT&CK data and validate technique IDs at runtime.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>FastAPI</span>
+                            <span>Claude AI</span>
+                            <span>MITRE ATT&CK</span>
+                        </div>
+                    </div>
+                </div>
                 <!-- Project 1 -->
                 <div class="project-card animate-on-scroll">
                     <div class="project-img">
@@ -254,10 +307,6 @@
                             <span>Java</span>
                             <span>Data Structures</span>
                             <span>GUI</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-sm">View Details</a>
-                            <a href="#" class="btn btn-sm btn-outline">GitHub</a>
                         </div>
                     </div>
                 </div>

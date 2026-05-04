@@ -353,6 +353,18 @@ body.light-theme #navbar {
     transition: var(--transition);
 }
 
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
 /* Terminal Effect in Hero Section */
 .terminal-wrapper {
     width: 100%;
@@ -1658,7 +1670,7 @@ a:not(.btn):not(.nav-links a):not(.hero-social a):not(.footer-social a):hover::a
     }
     
     .hamburger {
-        display: block;
+        display: flex;
     }
     
     .skill-grid {

@@ -273,13 +273,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // Navigation highlighting and smooth scrolling
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
-    
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-links');
+
+    // Hamburger menu toggle
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+    }
+
     // Smooth scrolling for navigation links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             smoothScroll(targetId, 1000);
+            if (navMenu) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
         });
     });
     
@@ -288,19 +302,41 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function checkAnimation() {
         const triggerBottom = window.innerHeight * 0.8;
-        
+
         animatedElements.forEach(element => {
             const box = element.getBoundingClientRect();
             if (box.top < triggerBottom) {
                 element.classList.add('show');
+                element.querySelectorAll('.skill-bar').forEach(bar => {
+                    const fill = bar.querySelector('.skill-level');
+                    if (fill) fill.style.width = bar.getAttribute('data-level') || '0%';
+                });
             } else {
                 element.classList.remove('show');
+                element.querySelectorAll('.skill-bar').forEach(bar => {
+                    const fill = bar.querySelector('.skill-level');
+                    if (fill) fill.style.width = '0%';
+                });
             }
         });
     }
-    
+
+    function updateActiveNav() {
+        let current = '';
+        sections.forEach(section => {
+            if (section.getBoundingClientRect().top <= 150) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+        });
+    }
+
     window.addEventListener('scroll', checkAnimation);
+    window.addEventListener('scroll', updateActiveNav);
     checkAnimation();
+    updateActiveNav();
     
     // Start the Matrix effect animation
     setInterval(drawMatrix, 50);
