@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     canvas.height = window.innerHeight;
     
     // Characters for the Matrix effect (coffee-themed)
-    const chars = '01JVC0FF33B34N5M0CH4CH41BR3W3SPR3550C0D3H4CK5CRYPT0';
+    const chars = '10AIMLLLMGPTNEURALNETWORKEMBEDDINGVISIONTRANSFORMERAGENT';
     
     const fontSize = 14;
     const columns = canvas.width / fontSize;
@@ -109,11 +109,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Terminal typing effect with more commands
     const commands = [
-        "view cybersecurity_portfolio.md",
-        "scan network -v",
-        "analyze vulnerabilities",
-        "cat /etc/security/config",
-        "ssh secure@192.168.1.1"
+        "python train_model.py --epochs 50",
+        "ollama run llama3.2",
+        "curl api.anthropic.com/v1/messages",
+        "python app.py --mode inference",
+        "git push origin main"
     ];
     let currentCommand = 0;
     const typingCommand = document.querySelector('.typing-command');
@@ -344,107 +344,46 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start the terminal typing effect
     typeCommand();
     
-    // --- Replace the random attack simulation with a "made up but realistic" feed ---
-    // Simulated up-to-date network threat feed (fictional, but looks real)
-    const simulatedThreats = [
-        {
-            country: "Russia",
-            attackType: "Zero-day Exploit",
-            targetType: "Financial Institution",
-            severity: 9,
-            time: () => new Date().toLocaleTimeString()
-        },
-        {
-            country: "China",
-            attackType: "DDoS",
-            targetType: "Government Agency",
-            severity: 8,
-            time: () => new Date().toLocaleTimeString()
-        },
-        {
-            country: "United States",
-            attackType: "Phishing",
-            targetType: "Healthcare Provider",
-            severity: 6,
-            time: () => new Date().toLocaleTimeString()
-        },
-        {
-            country: "Iran",
-            attackType: "Ransomware",
-            targetType: "Energy Infrastructure",
-            severity: 10,
-            time: () => new Date().toLocaleTimeString()
-        },
-        {
-            country: "North Korea",
-            attackType: "Brute Force",
-            targetType: "Military Network",
-            severity: 7,
-            time: () => new Date().toLocaleTimeString()
-        },
-        {
-            country: "Brazil",
-            attackType: "SQL Injection",
-            targetType: "E-commerce Platform",
-            severity: 5,
-            time: () => new Date().toLocaleTimeString()
-        },
-        {
-            country: "India",
-            attackType: "Malware",
-            targetType: "Cloud Service",
-            severity: 6,
-            time: () => new Date().toLocaleTimeString()
-        },
-        {
-            country: "Germany",
-            attackType: "Supply Chain Attack",
-            targetType: "Manufacturing Facility",
-            severity: 8,
-            time: () => new Date().toLocaleTimeString()
-        },
-        {
-            country: "France",
-            attackType: "ATP",
-            targetType: "Telecom Provider",
-            severity: 7,
-            time: () => new Date().toLocaleTimeString()
-        },
-        {
-            country: "Turkey",
-            attackType: "Social Engineering",
-            targetType: "Educational Institution",
-            severity: 4,
-            time: () => new Date().toLocaleTimeString()
-        }
+    // Simulated AI development feed
+    const simulatedEvents = [
+        { source: "Anthropic", event: "Constitutional AI v3 alignment paper published", domain: "AI Safety", impact: 9, time: () => new Date().toLocaleTimeString() },
+        { source: "OpenAI", event: "GPT-5 reasoning benchmark results released", domain: "Language Models", impact: 8, time: () => new Date().toLocaleTimeString() },
+        { source: "Google DeepMind", event: "Gemini 2.5 multimodal architecture update", domain: "Multimodal AI", impact: 8, time: () => new Date().toLocaleTimeString() },
+        { source: "Meta AI", event: "LLaMA 4 open-source weights released", domain: "Open Source LLM", impact: 9, time: () => new Date().toLocaleTimeString() },
+        { source: "Mistral AI", event: "Mixture-of-experts inference optimization", domain: "Model Architecture", impact: 7, time: () => new Date().toLocaleTimeString() },
+        { source: "Hugging Face", event: "New instruction-tuning dataset benchmark", domain: "Training & Fine-Tuning", impact: 5, time: () => new Date().toLocaleTimeString() },
+        { source: "Stanford HAI", event: "AI Index 2026 annual report published", domain: "AI Research", impact: 6, time: () => new Date().toLocaleTimeString() },
+        { source: "NVIDIA", event: "H200 transformer inference throughput record", domain: "AI Hardware", impact: 7, time: () => new Date().toLocaleTimeString() },
+        { source: "Cohere", event: "Enterprise RAG pipeline benchmark study", domain: "Enterprise AI", impact: 6, time: () => new Date().toLocaleTimeString() },
+        { source: "xAI", event: "Grok-3 expanded multimodal capabilities", domain: "Language Models", impact: 7, time: () => new Date().toLocaleTimeString() }
     ];
 
-    let threatIndex = 0;
-    let madeUpTotalAttacks = 0;
-    const madeUpCountries = new Set();
-    const madeUpTypes = new Set();
+    let eventIndex = 0;
+    let totalEvents = 0;
+    const trackedSources = new Set();
+    const trackedDomains = new Set();
 
-    function showSimulatedThreat() {
-        const threat = simulatedThreats[threatIndex % simulatedThreats.length];
-        threatIndex++;
+    function showSimulatedEvent() {
+        const event = simulatedEvents[eventIndex % simulatedEvents.length];
+        eventIndex++;
 
-        madeUpCountries.add(threat.country);
-        madeUpTypes.add(threat.attackType);
+        trackedSources.add(event.source);
+        trackedDomains.add(event.domain);
 
         const attackEntry = document.createElement('div');
         attackEntry.className = 'attack-entry';
 
-        let severityClass = 'low';
-        if (threat.severity > 7) severityClass = 'high';
-        else if (threat.severity > 4) severityClass = 'medium';
+        let impactClass = 'low';
+        if (event.impact > 7) impactClass = 'high';
+        else if (event.impact > 4) impactClass = 'medium';
 
         attackEntry.innerHTML = `
-            <div class="attack-time">${threat.time()}</div>
+            <div class="attack-time">${event.time()}</div>
             <div class="attack-details">
-                <span class="attack-source">${threat.country}</span>
-                <span class="attack-type">${threat.attackType}</span>
-                <span class="attack-target">${threat.targetType}</span>
-                <span class="attack-severity ${severityClass}">[Severity: ${threat.severity}/10]</span>
+                <span class="attack-source">${event.source}</span>
+                <span class="attack-type">${event.event}</span>
+                <span class="attack-target">${event.domain}</span>
+                <span class="attack-severity ${impactClass}">[Impact: ${event.impact}/10]</span>
             </div>
         `;
 
@@ -453,23 +392,21 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 attackEntry.classList.add('visible');
             }, 10);
-            // Show more entries - increase from 10 to 15
             if (attackLog.children.length > 15) {
                 attackLog.removeChild(attackLog.lastChild);
             }
         }
 
-        madeUpTotalAttacks++;
+        totalEvents++;
         if (attackCount && countryCount && typeCount) {
-            updateCounter(attackCount, madeUpTotalAttacks);
-            updateCounter(countryCount, madeUpCountries.size);
-            updateCounter(typeCount, madeUpTypes.size);
+            updateCounter(attackCount, totalEvents);
+            updateCounter(countryCount, trackedSources.size);
+            updateCounter(typeCount, trackedDomains.size);
         }
     }
 
-    // Combined function to show threat in log
     function showThreatWithMap() {
-        showSimulatedThreat();
+        showSimulatedEvent();
     }
 
     // Start the simulation
