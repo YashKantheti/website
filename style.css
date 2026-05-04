@@ -4,7 +4,7 @@
     --primary-color: #5A4D41; /* Mocha */
     --secondary-color: #1E1D1D; /* Americano */
     --accent-color: #7E6957; /* Chai */
-    --accent-alt: #FF0066; /* Hot Pink for cybersecurity accents */
+    --accent-alt: #FF0066; /* Hot Pink for accents */
     --text-color: #F9F6F3; /* Light cream text */
     --dark-text: #1E1D1D; /* Americano for dark text */
     --bg-color: #1E1D1D; /* Americano for background */
@@ -925,7 +925,7 @@ body.light-theme .project-card:hover {
     gap: 15px;
 }
 
-/* Cybersecurity Threat Visualizer - Premium Design */
+/* AI Pulse Feed - Premium Design */
 .security-feed {
     background-color: var(--americano);
     position: relative;
@@ -943,7 +943,7 @@ body.light-theme .project-card:hover {
     z-index: 0;
 }
 
-.cybersecurity-visualizer {
+.ai-visualizer {
     background-color: rgba(48, 48, 49, 0.3);
     border-radius: 12px;
     padding: 30px;
@@ -955,7 +955,7 @@ body.light-theme .project-card:hover {
     z-index: 2;
 }
 
-.cybersecurity-visualizer::before {
+.ai-visualizer::before {
     content: '';
     position: absolute;
     top: 0;
@@ -967,7 +967,7 @@ body.light-theme .project-card:hover {
     border-radius: 12px;
 }
 
-body.light-theme .cybersecurity-visualizer {
+body.light-theme .ai-visualizer {
     background-color: #FFFFFF;
     border: 1px solid #E0E0E0;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -1040,42 +1040,8 @@ body.light-theme .stat-item {
     margin-top: 40px;
 }
 
-#threat-map {
-    height: 450px;
-    background-color: rgba(30, 29, 29, 0.3);
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(126, 105, 87, 0.2);
-    box-shadow: var(--shadow);
-}
 
-#threat-map::before {
-    content: 'GLOBAL THREAT MAP';
-    font-family: 'Fira Code', monospace;
-    color: var(--chai);
-    font-size: 1.8rem;
-    opacity: 0.15;
-    z-index: 1;
-}
-
-#threat-map::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500"><path d="M250,100 Q400,150 500,100 T750,100" stroke="rgba(126, 105, 87, 0.2)" stroke-width="0.5" fill="none" /></svg>');
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.2;
-}
-
-.attack-log {
+.feed-log {
     background-color: rgba(30, 29, 29, 0.3);
     border-radius: 8px;
     padding: 25px;
@@ -1088,13 +1054,13 @@ body.light-theme .stat-item {
     overflow-y: auto;
 }
 
-body.light-theme .attack-log {
+body.light-theme .feed-log {
     background-color: #F9F9F9;
     border: 1px solid #E0E0E0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-.attack-log h3 {
+.feed-log h3 {
     color: var(--cream);
     margin-bottom: 20px;
     font-size: 1.2rem;
@@ -1105,7 +1071,7 @@ body.light-theme .attack-log {
     border-bottom: 1px solid rgba(126, 105, 87, 0.2);
 }
 
-.attack-log h3::before {
+.feed-log h3::before {
     content: '\f09c';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
@@ -1134,7 +1100,7 @@ body.light-theme .attack-log {
     border-radius: 3px;
 }
 
-.attack-entry {
+.feed-entry {
     padding: 12px;
     border-bottom: 1px solid rgba(134, 124, 112, 0.1);
     margin-bottom: 10px;
@@ -1145,43 +1111,43 @@ body.light-theme .attack-log {
     border-radius: 4px;
 }
 
-.attack-entry.visible {
+.feed-entry.visible {
     opacity: 1;
     transform: translateX(0);
 }
 
-body.light-theme .attack-entry {
+body.light-theme .feed-entry {
     background-color: #FFFFFF;
     border: 1px solid #E8E8E8;
 }
 
-.attack-time {
+.feed-time {
     color: var(--roast);
     margin-bottom: 8px;
     font-size: 0.75rem;
 }
 
-.attack-details {
+.feed-details {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
-.attack-source {
+.feed-source {
     color: var(--chai);
     font-weight: 600;
 }
 
-.attack-type {
+.feed-type {
     color: var(--cream);
 }
 
-.attack-target {
+.feed-target {
     color: var(--cream);
     opacity: 0.8;
 }
 
-.attack-severity {
+.feed-impact {
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 0.7rem;
@@ -1190,17 +1156,17 @@ body.light-theme .attack-entry {
     margin-top: 5px;
 }
 
-.attack-severity.low {
+.feed-impact.low {
     background-color: rgba(90, 77, 65, 0.3);
     color: var(--cream);
 }
 
-.attack-severity.medium {
+.feed-impact.medium {
     background-color: rgba(126, 105, 87, 0.4);
     color: var(--cream);
 }
 
-.attack-severity.high {
+.feed-impact.high {
     background-color: rgba(255, 0, 102, 0.3);
     color: var(--cream);
     animation: pulse 2s infinite;

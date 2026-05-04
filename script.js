@@ -1,4 +1,4 @@
-// Enhanced Portfolio JavaScript with Cybersecurity Features
+// AI Portfolio JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
     // Theme Toggle Functionality
@@ -138,97 +138,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Cybersecurity threat simulation with enhanced visuals
-    const attackLog = document.getElementById('attack-log');
-    const attackCount = document.getElementById('attack-count');
+    // AI Pulse feed elements
+    const feedLog = document.getElementById('feed-log');
+    const feedCount = document.getElementById('feed-count');
     const countryCount = document.getElementById('country-count');
     const typeCount = document.getElementById('type-count');
-    
-    // List of countries for random attack sources
-    const countries = [
-        'United States', 'Russia', 'China', 'North Korea', 'Iran', 
-        'Ukraine', 'Germany', 'Brazil', 'India', 'United Kingdom', 
-        'Canada', 'Australia', 'Japan', 'South Korea', 'Singapore',
-        'France', 'Israel', 'Vietnam', 'Netherlands', 'Turkey'
-    ];
-    
-    // List of attack types
-    const attackTypes = [
-        'SQL Injection', 'XSS Attack', 'DDoS', 'Phishing', 'Brute Force', 
-        'Ransomware', 'Man-in-the-Middle', 'Zero-day Exploit', 'Malware',
-        'Password Attack', 'DNS Tunneling', 'Session Hijacking', 'Crypto Mining',
-        'Supply Chain Attack', 'Social Engineering', 'APT', 'Insider Threat'
-    ];
-    
-    // List of target types
-    const targetTypes = [
-        'Financial Institution', 'Government Agency', 'Healthcare Provider',
-        'E-commerce Platform', 'Educational Institution', 'Energy Infrastructure',
-        'Tech Company', 'Media Organization', 'Military Network', 'Transportation System',
-        'Cloud Service', 'Manufacturing Facility', 'Telecom Provider', 'Critical Infrastructure',
-        'Cryptocurrency Exchange', 'IoT Network', 'Satellite Systems'
-    ];
-    
-    let totalAttacks = 0;
-    const trackCountries = new Set();
-    const trackTypes = new Set();
-    
-    function generateAttack() {
-        const country = countries[Math.floor(Math.random() * countries.length)];
-        const attackType = attackTypes[Math.floor(Math.random() * attackTypes.length)];
-        const targetType = targetTypes[Math.floor(Math.random() * targetTypes.length)];
-        
-        trackCountries.add(country);
-        trackTypes.add(attackType);
-        
-        const attackEntry = document.createElement('div');
-        attackEntry.className = 'attack-entry';
-        
-        const timestamp = new Date().toLocaleTimeString();
-        const severity = Math.floor(Math.random() * 10) + 1;
-        let severityClass = 'low';
-        
-        if (severity > 7) {
-            severityClass = 'high';
-        } else if (severity > 4) {
-            severityClass = 'medium';
-        }
-        
-        attackEntry.innerHTML = `
-            <div class="attack-time">${timestamp}</div>
-            <div class="attack-details">
-                <span class="attack-source">${country}</span>
-                <span class="attack-type">${attackType}</span>
-                <span class="attack-target">${targetType}</span>
-                <span class="attack-severity ${severityClass}">[Severity: ${severity}/10]</span>
-            </div>
-        `;
-        
-        // Add to log and update stats
-        if (attackLog) {
-            attackLog.prepend(attackEntry);
-            
-            // Animation for new attacks
-            setTimeout(() => {
-                attackEntry.classList.add('visible');
-            }, 10);
-            
-            // Remove older entries to keep the list manageable
-            if (attackLog.children.length > 10) {
-                attackLog.removeChild(attackLog.lastChild);
-            }
-        }
-        
-        totalAttacks++;
-        
-        // Update stat counters with animation
-        if (attackCount && countryCount && typeCount) {
-            updateCounter(attackCount, totalAttacks);
-            updateCounter(countryCount, trackCountries.size);
-            updateCounter(typeCount, trackTypes.size);
-        }
-    }
-    
+
+
     function updateCounter(element, value) {
         const current = parseInt(element.textContent);
         if (current !== value) {
@@ -393,7 +309,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displayNewsItem(title, url, source, domain, impact, timeStr) {
         const entry = document.createElement('div');
-        entry.className = 'attack-entry';
+        entry.className = 'feed-entry';
 
         let impactClass = impact > 7 ? 'high' : impact > 4 ? 'medium' : 'low';
         const safe = safeUrl(url);
@@ -402,27 +318,27 @@ document.addEventListener('DOMContentLoaded', function() {
             : escapeHtml(title);
 
         entry.innerHTML = `
-            <div class="attack-time">${escapeHtml(timeStr)}</div>
-            <div class="attack-details">
-                <span class="attack-source">${escapeHtml(source)}</span>
-                <span class="attack-type">${titleHtml}</span>
-                <span class="attack-target">${escapeHtml(domain)}</span>
-                <span class="attack-severity ${impactClass}">[Impact: ${impact}/10]</span>
+            <div class="feed-time">${escapeHtml(timeStr)}</div>
+            <div class="feed-details">
+                <span class="feed-source">${escapeHtml(source)}</span>
+                <span class="feed-type">${titleHtml}</span>
+                <span class="feed-target">${escapeHtml(domain)}</span>
+                <span class="feed-impact ${impactClass}">[Impact: ${impact}/10]</span>
             </div>
         `;
 
-        if (attackLog) {
-            attackLog.prepend(entry);
+        if (feedLog) {
+            feedLog.prepend(entry);
             setTimeout(() => entry.classList.add('visible'), 10);
-            if (attackLog.children.length > 15) attackLog.removeChild(attackLog.lastChild);
+            if (feedLog.children.length > 15) feedLog.removeChild(feedLog.lastChild);
         }
 
         trackedSources.add(source);
         trackedDomains.add(domain);
         totalEvents++;
 
-        if (attackCount && countryCount && typeCount) {
-            updateCounter(attackCount, totalEvents);
+        if (feedCount && countryCount && typeCount) {
+            updateCounter(feedCount, totalEvents);
             updateCounter(countryCount, trackedSources.size);
             updateCounter(typeCount, trackedDomains.size);
         }
@@ -442,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (hits.length === 0) throw new Error('no relevant results');
 
-            if (attackLog) attackLog.innerHTML = '';
+            if (feedLog) feedLog.innerHTML = '';
 
             hits.forEach((hit, i) => {
                 setTimeout(() => {
