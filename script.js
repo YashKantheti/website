@@ -344,60 +344,83 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start the terminal typing effect
     typeCommand();
     
-    // Simulated AI development feed
-    const simulatedEvents = [
-        { source: "Anthropic", event: "Constitutional AI v3 alignment paper published", domain: "AI Safety", impact: 9, time: () => new Date().toLocaleTimeString() },
-        { source: "OpenAI", event: "GPT-5 reasoning benchmark results released", domain: "Language Models", impact: 8, time: () => new Date().toLocaleTimeString() },
-        { source: "Google DeepMind", event: "Gemini 2.5 multimodal architecture update", domain: "Multimodal AI", impact: 8, time: () => new Date().toLocaleTimeString() },
-        { source: "Meta AI", event: "LLaMA 4 open-source weights released", domain: "Open Source LLM", impact: 9, time: () => new Date().toLocaleTimeString() },
-        { source: "Mistral AI", event: "Mixture-of-experts inference optimization", domain: "Model Architecture", impact: 7, time: () => new Date().toLocaleTimeString() },
-        { source: "Hugging Face", event: "New instruction-tuning dataset benchmark", domain: "Training & Fine-Tuning", impact: 5, time: () => new Date().toLocaleTimeString() },
-        { source: "Stanford HAI", event: "AI Index 2026 annual report published", domain: "AI Research", impact: 6, time: () => new Date().toLocaleTimeString() },
-        { source: "NVIDIA", event: "H200 transformer inference throughput record", domain: "AI Hardware", impact: 7, time: () => new Date().toLocaleTimeString() },
-        { source: "Cohere", event: "Enterprise RAG pipeline benchmark study", domain: "Enterprise AI", impact: 6, time: () => new Date().toLocaleTimeString() },
-        { source: "xAI", event: "Grok-3 expanded multimodal capabilities", domain: "Language Models", impact: 7, time: () => new Date().toLocaleTimeString() }
-    ];
-
-    let eventIndex = 0;
+    // AI Pulse — live news via Hacker News Algolia API (free, no key, CORS-enabled)
     let totalEvents = 0;
     const trackedSources = new Set();
     const trackedDomains = new Set();
 
-    function showSimulatedEvent() {
-        const event = simulatedEvents[eventIndex % simulatedEvents.length];
-        eventIndex++;
+    function escapeHtml(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
 
-        trackedSources.add(event.source);
-        trackedDomains.add(event.domain);
+    function safeUrl(url) {
+        if (!url) return null;
+        try {
+            const u = new URL(url);
+            return (u.protocol === 'http:' || u.protocol === 'https:') ? url : null;
+        } catch { return null; }
+    }
 
-        const attackEntry = document.createElement('div');
-        attackEntry.className = 'attack-entry';
+    function extractDomain(url) {
+        const safe = safeUrl(url);
+        if (!safe) return 'Hacker News';
+        try { return new URL(safe).hostname.replace('www.', ''); }
+        catch { return 'Hacker News'; }
+    }
 
-        let impactClass = 'low';
-        if (event.impact > 7) impactClass = 'high';
-        else if (event.impact > 4) impactClass = 'medium';
+    function categorizeAI(title) {
+        const t = title.toLowerCase();
+        if (t.includes('gpt') || t.includes('openai') || t.includes('chatgpt') || t.includes('language model')) return 'Language Models';
+        if (t.includes('claude') || t.includes('anthropic') || t.includes('alignment') || t.includes('safety')) return 'AI Safety';
+        if (t.includes('gemini') || t.includes('deepmind') || t.includes('multimodal')) return 'Multimodal AI';
+        if (t.includes('llama') || t.includes('mistral') || t.includes('open-source') || t.includes('open source')) return 'Open Source LLM';
+        if (t.includes('agent') || t.includes('autonom')) return 'AI Agents';
+        if (t.includes('image') || t.includes('vision') || t.includes('diffusion')) return 'Computer Vision';
+        if (t.includes('robot')) return 'Robotics';
+        if (t.includes('paper') || t.includes('research') || t.includes('benchmark')) return 'AI Research';
+        return 'AI & ML';
+    }
 
-        attackEntry.innerHTML = `
-            <div class="attack-time">${event.time()}</div>
+    function scoreToImpact(points, comments) {
+        const total = (points || 0) + (comments || 0) * 2;
+        if (total > 400) return 9;
+        if (total > 200) return 8;
+        if (total > 100) return 7;
+        if (total > 50)  return 6;
+        if (total > 20)  return 5;
+        return Math.max(1, Math.round(total / 10)) || 4;
+    }
+
+    function displayNewsItem(title, url, source, domain, impact, timeStr) {
+        const entry = document.createElement('div');
+        entry.className = 'attack-entry';
+
+        let impactClass = impact > 7 ? 'high' : impact > 4 ? 'medium' : 'low';
+        const safe = safeUrl(url);
+        const titleHtml = safe
+            ? `<a href="${safe}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">${escapeHtml(title)}</a>`
+            : escapeHtml(title);
+
+        entry.innerHTML = `
+            <div class="attack-time">${escapeHtml(timeStr)}</div>
             <div class="attack-details">
-                <span class="attack-source">${event.source}</span>
-                <span class="attack-type">${event.event}</span>
-                <span class="attack-target">${event.domain}</span>
-                <span class="attack-severity ${impactClass}">[Impact: ${event.impact}/10]</span>
+                <span class="attack-source">${escapeHtml(source)}</span>
+                <span class="attack-type">${titleHtml}</span>
+                <span class="attack-target">${escapeHtml(domain)}</span>
+                <span class="attack-severity ${impactClass}">[Impact: ${impact}/10]</span>
             </div>
         `;
 
         if (attackLog) {
-            attackLog.prepend(attackEntry);
-            setTimeout(() => {
-                attackEntry.classList.add('visible');
-            }, 10);
-            if (attackLog.children.length > 15) {
-                attackLog.removeChild(attackLog.lastChild);
-            }
+            attackLog.prepend(entry);
+            setTimeout(() => entry.classList.add('visible'), 10);
+            if (attackLog.children.length > 15) attackLog.removeChild(attackLog.lastChild);
         }
 
+        trackedSources.add(source);
+        trackedDomains.add(domain);
         totalEvents++;
+
         if (attackCount && countryCount && typeCount) {
             updateCounter(attackCount, totalEvents);
             updateCounter(countryCount, trackedSources.size);
@@ -405,15 +428,48 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function showThreatWithMap() {
-        showSimulatedEvent();
+    const AI_KEYWORDS = ['ai', 'llm', 'gpt', 'claude', 'gemini', 'llama', 'mistral', 'neural', 'openai', 'anthropic', 'machine learning', 'deep learning', 'diffusion', 'transformer', 'chatbot', 'agent'];
+
+    async function loadAINews() {
+        try {
+            const res = await fetch('https://hn.algolia.com/api/v1/search_by_date?query=AI+LLM+machine+learning&tags=story&hitsPerPage=25');
+            if (!res.ok) throw new Error('fetch failed');
+            const data = await res.json();
+
+            const hits = data.hits.filter(h =>
+                h.title && AI_KEYWORDS.some(kw => h.title.toLowerCase().includes(kw))
+            ).slice(0, 12);
+
+            if (hits.length === 0) throw new Error('no relevant results');
+
+            if (attackLog) attackLog.innerHTML = '';
+
+            hits.forEach((hit, i) => {
+                setTimeout(() => {
+                    const source = extractDomain(hit.url);
+                    const domain = categorizeAI(hit.title);
+                    const impact = scoreToImpact(hit.points, hit.num_comments);
+                    const timeStr = new Date(hit.created_at).toLocaleTimeString();
+                    displayNewsItem(hit.title, hit.url, source, domain, impact, timeStr);
+                }, i * 250);
+            });
+        } catch {
+            // Fallback when offline or API unavailable
+            const fallback = [
+                { title: 'Claude model update released', url: null, source: 'Anthropic', domain: 'AI Safety', impact: 8 },
+                { title: 'GPT-5 reasoning benchmark results', url: null, source: 'OpenAI', domain: 'Language Models', impact: 9 },
+                { title: 'Gemini 2.5 multimodal architecture', url: null, source: 'Google DeepMind', domain: 'Multimodal AI', impact: 8 },
+                { title: 'LLaMA 4 open-source weights released', url: null, source: 'Meta AI', domain: 'Open Source LLM', impact: 8 },
+                { title: 'New fine-tuning benchmark released', url: null, source: 'Hugging Face', domain: 'Training & Fine-Tuning', impact: 6 }
+            ];
+            fallback.forEach((item, i) => {
+                setTimeout(() => {
+                    displayNewsItem(item.title, item.url, item.source, item.domain, item.impact, new Date().toLocaleTimeString());
+                }, i * 250);
+            });
+        }
     }
 
-    // Start the simulation
-    setInterval(showThreatWithMap, 2500); // Faster interval for more activity
-    
-    // Show more on load for better initial display
-    for (let i = 0; i < 5; i++) {
-        showThreatWithMap();
-    }
+    loadAINews();
+    setInterval(loadAINews, 5 * 60 * 1000);
 });
