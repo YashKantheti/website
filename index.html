@@ -1,437 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yash Kantheti</title>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts - Premium combination -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1d1d">
+  <meta name="description" content="Yash Kantheti — Computer Science student at Virginia Tech exploring AI, machine learning, and intelligent systems. Selected projects, research, and a fascination with flight.">
+  <meta property="og:title" content="Yash Kantheti — AI, ML & a little altitude">
+  <meta property="og:description" content="Building intelligent systems with real-world purpose. Explore my AI projects, research, and the things that keep me curious.">
+  <meta property="og:type" content="website">
+  <title>Yash Kantheti — AI, ML & a little altitude</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Matrix Canvas Background -->
-    <canvas id="matrix-canvas"></canvas>
-    
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="container">
-            <div class="logo">YK</div>
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#ai-feed">AI</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-                <i class="fas fa-sun"></i>
-            </button>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Yash Kantheti, home"><span class="brand-mark">yk<span>.</span></span><span class="brand-name">YASH KANTHETI</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="#projects">Selected work</a><a href="#about">About</a><a href="#skills">Toolkit</a><a href="#contact" class="nav-contact">Let’s talk <span aria-hidden="true">↗</span></a>
+      </div>
+      <button id="theme-toggle" class="icon-button" type="button" aria-label="Switch to light theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
     </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="terminal-wrapper animate-on-scroll">
-                    <div class="terminal-header">
-                        <span class="terminal-title">~/yash_kantheti</span>
-                        <div class="terminal-buttons">
-                            <span class="terminal-button red"></span>
-                            <span class="terminal-button yellow"></span>
-                            <span class="terminal-button green"></span>
-                        </div>
-                    </div>
-                    <div class="terminal-body">
-                        <div class="line">
-                            <span class="prompt">$</span> <span class="command">whoami</span>
-                        </div>
-                        <div class="line">
-                            <span class="output">Yashwanth (Yash) Kantheti</span>
-                        </div>
-                        <div class="line">
-                            <span class="prompt">$</span> <span class="command">cat introduction.txt</span>
-                        </div>
-                        <div class="line multiline">
-                            <span class="output">AI Engineer & Builder</span>
-                        </div>
-                        <div class="line">
-                            <span class="prompt">$</span> <span class="typing-command">_</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
-                <div class="hero-social">
-                    <a href="https://github.com/yashkantheti" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/yashkantheti" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:yashk@vt.edu"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <a href="#about">
-                <span class="mouse">
-                    <span class="wheel"></span>
-                </span>
-            </a>
-        </div>
+  </header>
+  <main id="main">
+    <section class="hero wrap" id="home" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> COMPUTER SCIENCE @ VIRGINIA TECH</p>
+        <h1 id="hero-title">Building<br>intelligence.<br>Chasing <em>altitude.</em></h1>
+        <p class="hero-intro">Hey, I’m <strong>Yash.</strong> An AI/ML-focused student turning curiosity into useful systems — with a soft spot for things that fly.</p>
+        <div class="hero-actions"><a class="button primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a><a class="text-link" href="#about">The person behind the code <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-social"><a href="https://github.com/YashKantheti" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://linkedin.com/in/yashkantheti" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><span>Based in Blacksburg, VA</span></div>
+      </div>
+      <div class="flight-scene" aria-label="Animated F-35-inspired aircraft illustration">
+        <div class="flight-grid" aria-hidden="true"></div>
+        <div class="scene-top"><span><span class="status-dot"></span> THE SKY IS A STARTING POINT</span><span>FIG. 01</span></div>
+        <svg class="flight-routes" viewBox="0 0 600 680" fill="none" aria-hidden="true"><ellipse cx="300" cy="330" rx="228" ry="254" transform="rotate(-26 300 330)"/><ellipse cx="300" cy="330" rx="180" ry="200" transform="rotate(-26 300 330)"/><path class="route-dash" d="M-40 610C240 610 565 370 575 36"/><path d="M300 46v35m0 498v35M44 330h35m442 0h35"/><circle class="route-point" cx="111" cy="521" r="5"/></svg>
+        <span class="scene-coordinate coordinate-top" aria-hidden="true">37.2296° N<br>80.4139° W</span>
+        <span class="scene-coordinate coordinate-side" aria-hidden="true">CURIOSITY / NO CEILING</span>
+        <div class="aircraft-position"><div class="aircraft-float"><img class="aircraft" src="assets/aircraft.svg" width="460" height="660" alt="Top view of a swept-wing jet, illustrated in warm metallic tones"></div></div>
+        <span class="aircraft-caption">F-35 INSPIRED <span> / </span> ENGINEERED TO EXPLORE</span>
+        <div class="scene-bottom"><button id="fly-button" class="flight-button" type="button"><span aria-hidden="true">↗</span> Take it for a flight</button><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause animations"><span class="pause-symbol" aria-hidden="true">Ⅱ</span><span class="motion-label">Pause motion</span></button></div>
+        <p id="flight-status" class="sr-only" role="status"></p>
+      </div>
+      <div class="hero-footer"><span>LEARNING BY BUILDING. ALWAYS.</span><a href="#projects">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>About Me</h2>
-                <p class="section-description">Computer Science student at Virginia Tech building AI-powered systems</p>
+    <div class="focus-strip" aria-label="Areas of interest"><div class="wrap"><span>ARTIFICIAL INTELLIGENCE</span><i aria-hidden="true">✳</i><span>COMPUTER VISION</span><i aria-hidden="true">✳</i><span>INTELLIGENT SYSTEMS</span><i aria-hidden="true">✳</i><span>AEROSPACE & DEFENSE</span></div></div>
+
+    <section class="section wrap" id="projects" aria-labelledby="projects-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / SELECTED WORK</p><h2 id="projects-title">Ideas, put to <em>work.</em></h2></div><p>From a camera capture to an actionable insight.<br>A few things I’ve helped bring to life.</p></div>
+      <div class="project-filters" role="group" aria-label="Filter projects"><button type="button" class="filter active" aria-pressed="true" data-filter="all">All projects <span>05</span></button><button type="button" class="filter" aria-pressed="false" data-filter="ai">AI & ML <span>03</span></button><button type="button" class="filter" aria-pressed="false" data-filter="software">Software <span>02</span></button></div>
+      <p class="sr-only" id="filter-status" role="status"></p>
+      <div class="projects-grid">
+        <article class="project featured" data-category="ai">
+          <div class="scout-visual" aria-label="Illustration of AGE Scout's equipment identification workflow">
+            <div class="visual-topline"><span>AGE SCOUT</span><span>VISION → INSIGHT</span></div>
+            <div class="scanner"><span class="scanner-corner tl"></span><span class="scanner-corner tr"></span><span class="scanner-corner bl"></span><span class="scanner-corner br"></span>
+              <svg viewBox="0 0 420 270" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="m72 104 80-43 179 30-80 44zM72 104v89l179 38V135m0 96 80-47V91M86 114l148 26v67L86 178zM152 61v-9l133 23v8M172 148v36m-14-38v36m-14-39v36m-14-38v36M280 126l35-21v51l-35 21zM251 214l106 30 20-11M357 244v-16"/><circle cx="111" cy="197" r="21"/><circle cx="111" cy="197" r="8"/><circle cx="296" cy="213" r="21"/><circle cx="296" cy="213" r="8"/><path d="m205 150 23 4v20l-23-4zM85 82l52-28"/></g><path d="M59 237h285" stroke="currentColor" stroke-dasharray="3 7" opacity=".25"/></svg>
+              <div class="scan-line" aria-hidden="true"></div><span class="object-label">AEROSPACE GROUND EQUIPMENT</span>
             </div>
-            <div class="about-content">
-                <div class="about-text animate-on-scroll">
-                    <p>I'm a Computer Science student at Virginia Tech building AI-powered applications at the intersection of defense, national security, and intelligent systems. From multimodal vision pipelines to LLM-integrated tools, I focus on applying cutting-edge AI to real-world problems.</p>
-                    <p>Currently an Undergraduate Researcher at the Hume National Security Center working on the Ut-ProSat II mission — researching SAR systems for lunar surface deployment. Previously a Network Support Engineer at Halvex Inc., monitoring 40+ enterprise networks and supporting 25+ cloud deployments.</p>
-                    <p>I've shipped AI applications in direct collaboration with the U.S. Air Force, built tools with Claude and Gemini, and stay current with the AI landscape through research, hackathons, and Cyber VT and AVUSI.</p>
-                    <a href="resume.pdf" download class="btn btn-outline">Download Resume</a>
-                </div>
-                <div class="about-details">
-                    <div class="detail-item animate-on-scroll">
-                        <i class="fas fa-flag-checkered"></i>
-                        <div>
-                            <h3>Career Goal</h3>
-                            <p>Build intelligent systems at the intersection of AI and national security — from full-stack AI applications to mission-critical deployments — contributing to technological superiority through responsible and innovative AI development.</p>
-                        </div>
-                    </div>
-                    <div class="detail-item animate-on-scroll">
-                        <i class="fas fa-trophy"></i>
-                        <div>
-                            <h3>Achievements</h3>
-                            <p>Presented at Hume NSC Colloquium 2026</p>
-                            <p>Deloitte CTF — top 30% finish</p>
-                            <p>CyberPatriot platinum and gold semi-final qualifier</p>
-                        </div>
-                    </div>
-                    <div class="detail-item animate-on-scroll">
-                        <i class="fas fa-graduation-cap"></i>
-                        <div>
-                            <h3>Education</h3>
-                            <p>B.S. Computer Science — Virginia Tech</p>
-                            <p>Expected Dec. 2027 · Dean's List</p>
-                            <p>Minor: National Security &amp; Foreign Affairs</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div class="pipeline"><span>Capture</span><b aria-hidden="true">→</b><span>Identify</span><b aria-hidden="true">→</b><span>Retrieve</span></div>
+            <div class="visual-caption"><span class="status-dot"></span> CONCEPTUAL WORKFLOW ILLUSTRATION</div>
+          </div>
+          <div class="project-content"><p class="eyebrow">FEATURED / AI VISION · U.S. AIR FORCE</p><h3>AGE Scout<span class="title-dot">.</span></h3><p class="project-subtitle">Less searching. More mission.</p><p>A mobile web app that turns equipment photos into useful answers. Built in collaboration with the U.S. Air Force through Hacking for Defense.</p><div class="project-impact"><strong>80+</strong><span>DoD stakeholder interviews<br>shaping real mission requirements</span></div><ul class="tags" aria-label="Technologies"><li>Next.js</li><li>React</li><li>TypeScript</li><li>Python</li><li>AI Vision</li></ul><details><summary>Inside the project <span aria-hidden="true">+</span></summary><p>The AI vision pipeline identifies aerospace ground equipment from camera captures and retrieves NSNs, CAGE codes, alternative parts, and applicable technical orders. Stakeholder discovery informed the full-stack mobile experience.</p></details></div>
+        </article>
+        <article class="project" data-category="ai"><div class="project-art log-art" aria-hidden="true"><div class="art-label">UNSTRUCTURED → UNDERSTOOD</div><div class="log-lines"><span>01 <i></i><i></i></span><span>02 <i></i><i></i></span><span class="highlight">03 <i></i><i></i><b>↗</b></span><span>04 <i></i><i></i></span></div><span class="art-stamp">CONTEXT. REASONING. VALIDATION.</span></div><div class="project-content"><p class="eyebrow">02 / LLM APPLICATIONS</p><h3>Security Log Analyzer</h3><p>Making noisy logs understandable with Claude. A full-stack analysis pipeline that maps findings to validated MITRE ATT&CK techniques.</p><ul class="tags" aria-label="Technologies"><li>Python</li><li>FastAPI</li><li>Claude</li><li>MITRE ATT&CK</li></ul><details><summary>Inside the project <span aria-hidden="true">+</span></summary><p>Handles files up to 50 MB with overlap-aware chunking. The MITRE attack-python STIX library supplies ATT&CK data for prompt construction and runtime validation of technique IDs and URLs.</p></details></div></article>
+        <article class="project" data-category="ai"><div class="project-art bucket-art" aria-hidden="true"><div class="art-label">DOCUMENTS → DECISIONS</div><div class="bucket-chart"><div class="chart-ring"><span>bucket<span class="title-dot">.</span><small>AI-POWERED CLARITY</small></span></div><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><span class="art-stamp">A CLEARER PICTURE OF YOUR FINANCES.</span></div><div class="project-content"><p class="eyebrow">03 / APPLIED AI</p><h3>Bucket AI</h3><p>Turning transaction PDFs into financial insights. Combining structured extraction, interactive visualizations, and Gemini-powered analysis.</p><ul class="tags" aria-label="Technologies"><li>Python</li><li>Gemini</li><li>JavaScript</li><li>Chart.js</li></ul><details><summary>Inside the project <span aria-hidden="true">+</span></summary><p>Implemented a pdfplumber pipeline for structured transaction extraction, contributed to the JavaScript and Bootstrap interface, and integrated Gemini through OpenRouter for AI-driven financial data processing.</p></details></div></article>
+        <article class="project compact-project" data-category="software"><div class="project-content"><p class="eyebrow">04 / DATA & VISUALIZATION</p><h3>Social Media Visualization</h3><p>Exploring social data through custom sorting and an approachable GUI. A team-built Java application grounded in data structures.</p><ul class="tags" aria-label="Technologies"><li>Java</li><li>Data Structures</li><li>GUI</li></ul><details><summary>Inside the project <span aria-hidden="true">+</span></summary><p>Used arrays, stacks, lists, and queues for data management and processing. Custom comparators and lists support dynamic sorting and clear presentation in the graphical interface.</p></details></div></article>
+        <article class="project compact-project" data-category="software"><div class="project-content"><p class="eyebrow">05 / USEFUL SOFTWARE</p><h3>QR Code Security Scanner</h3><p>A QR scanner with security features designed to help protect people from QR-code-based attacks.</p><ul class="tags" aria-label="Technologies"><li>Java</li><li>JavaScript</li><li>Docker</li></ul><div class="project-links"><a href="https://yashkantheti.github.io/web-qr-scanner/" target="_blank" rel="noopener noreferrer">Try the scanner <span aria-hidden="true">↗</span></a><a href="https://github.com/YashKantheti/web-qr-scanner" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></div></div></article>
+      </div>
+      <a class="text-link all-work" href="https://github.com/YashKantheti" target="_blank" rel="noopener noreferrer">More experiments on GitHub <span aria-hidden="true">↗</span></a>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2>My Skills</h2>
-                <p class="section-description">Full-stack development with a focus on AI integration and intelligent systems</p>
-            </div>
-            <div class="skills-content">
-                <div class="skill-category animate-on-scroll">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-grid">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-java"></i>
-                            </div>
-                            <h4>Java</h4>
-                            <div class="skill-bar" data-level="85%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-python"></i>
-                            </div>
-                            <h4>Python</h4>
-                            <div class="skill-bar" data-level="80%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-js"></i>
-                            </div>
-                            <h4>JavaScript</h4>
-                            <div class="skill-bar" data-level="70%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-c"></i>
-                            </div>
-                            <h4>C</h4>
-                            <div class="skill-bar" data-level="70%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <h4>Assembly</h4>
-                            <div class="skill-bar" data-level="55%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category animate-on-scroll">
-                    <h3>Technologies</h3>
-                    <div class="skill-grid">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-network-wired"></i>
-                            </div>
-                            <h4>CISCO Networking</h4>
-                            <div class="skill-bar" data-level="90%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h4>Security Assessments</h4>
-                            <div class="skill-bar" data-level="85%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-bug"></i>
-                            </div>
-                            <h4>Penetration Testing</h4>
-                            <div class="skill-bar" data-level="75%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-docker"></i>
-                            </div>
-                            <h4>Docker</h4>
-                            <div class="skill-bar" data-level="75%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-react"></i>
-                            </div>
-                            <h4>React / Next.js</h4>
-                            <div class="skill-bar" data-level="75%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                            <h4>AI/ML Integration</h4>
-                            <div class="skill-bar" data-level="80%">
-                                <div class="skill-level" style="width: 0%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="about-section" id="about" aria-labelledby="about-title"><div class="wrap section">
+      <div class="section-heading"><div><p class="eyebrow">02 / THE PERSON BEHIND THE CODE</p><h2 id="about-title">Curious by default.<br><em>Builder by choice.</em></h2></div><span class="about-spark" aria-hidden="true">✳</span></div>
+      <div class="about-grid"><div class="about-copy"><p class="large-copy">I’m Yashwanth (Yash) Kantheti, a Computer Science student at Virginia Tech exploring what intelligent systems can do in the real world.</p><p>I’m drawn to the intersection of AI, aerospace, and national security — from multimodal vision pipelines to LLM-powered tools. My favorite part is connecting an ambitious idea to something people can actually use.</p><p>That curiosity also explains the aircraft on this page. I love the blend of precision, engineering, and possibility that makes flight happen. I bring that same fascination to the systems I build.</p><div class="personal-note"><span aria-hidden="true">↗</span><p>Currently exploring<br><strong>AI that sees, reasons, and helps.</strong></p></div></div>
+        <div class="experience-list"><article><span class="timeline-dot"></span><p class="eyebrow">RESEARCH / HUME NATIONAL SECURITY CENTER</p><h3>Looking beyond the horizon.</h3><p>Undergraduate Researcher on the Ut-ProSat II mission, researching synthetic aperture radar systems for lunar surface deployment.</p></article><article><span class="timeline-dot"></span><p class="eyebrow">EXPERIENCE / HALVEX INC.</p><h3>Grounded in real systems.</h3><p>Previously a Network Support Engineer, monitoring <strong>40+ enterprise networks</strong> and supporting <strong>25+ cloud deployments.</strong></p></article><article><span class="timeline-dot"></span><p class="eyebrow">EDUCATION / VIRGINIA TECH</p><h3>B.S. Computer Science</h3><p>Expected December 2027 · Dean’s List<br>Minor in National Security & Foreign Affairs</p><p class="small-copy">Learning with the communities at Cyber VT and AVUSI.</p></article></div>
+      </div>
+      <div class="achievements" aria-label="Selected achievements"><div class="achievement-label"><span aria-hidden="true">↗</span><p>A FEW MILESTONES<br><strong>Along the way.</strong></p></div><article><p class="eyebrow">RESEARCH</p><h3>Hume NSC<br>Colloquium 2026</h3><p>Research presenter</p></article><article><p class="eyebrow">COMPETITION</p><h3>Top 30%</h3><p>Deloitte CTF</p></article><article><p class="eyebrow">COMPETITION</p><h3>Platinum & Gold</h3><p>CyberPatriot semi-final qualifier</p></article></div>
+    </div></section>
+
+    <section class="section wrap toolkit-section" id="skills" aria-labelledby="skills-title"><div class="section-heading"><div><p class="eyebrow">03 / THE TOOLKIT</p><h2 id="skills-title">Tools for the <em>next idea.</em></h2></div><p>The languages, frameworks, and tools<br>I’ve worked with along the way.</p></div>
+      <div class="toolkit"><div class="tool-row"><h3><span>01</span> AI & data</h3><ul><li>AI/ML Integration</li><li>Computer Vision</li><li>Claude</li><li>Gemini</li><li>OpenRouter</li><li>pdfplumber</li><li>Chart.js</li></ul></div><div class="tool-row"><h3><span>02</span> Languages</h3><ul><li>Python</li><li>Java</li><li>JavaScript</li><li>TypeScript</li><li>C</li><li>Assembly</li></ul></div><div class="tool-row"><h3><span>03</span> Web & applications</h3><ul><li>React</li><li>Next.js</li><li>FastAPI</li><li>Bootstrap</li></ul></div><div class="tool-row"><h3><span>04</span> Systems & foundations</h3><ul><li>Docker</li><li>Cisco Networking</li><li>Data Structures</li><li>Security Assessments</li><li>Penetration Testing</li><li>MITRE ATT&CK</li></ul></div></div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2>My Projects</h2>
-                <p class="section-description">Featured work showcasing my technical abilities.</p>
-            </div>
-            <div class="projects-grid">
-                <!-- AGE Scout -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="AGE Scout USAF">
-                    </div>
-                    <div class="project-content">
-                        <h3>AGE Scout — USAF Hacking for Defense</h3>
-                        <p>Collaborated with the U.S. Air Force to modernize aerospace ground equipment identification processes. Built a full-stack mobile web app with an AI vision pipeline that identifies ground equipment from camera captures, extracting NSN, CAGE codes, alternative parts, and applicable technical orders in real time. Conducted 80+ stakeholder interviews across the DoD to drive mission requirements.</p>
-                        <div class="project-tech">
-                            <span>Next.js</span>
-                            <span>React</span>
-                            <span>TypeScript</span>
-                            <span>AI Vision</span>
-                            <span>Python</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Security Log Analyzer -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Security Log Analyzer">
-                    </div>
-                    <div class="project-content">
-                        <h3>Security Log Analyzer</h3>
-                        <p>Full-stack threat detection tool using FastAPI and Claude that analyzes uploaded log files and maps findings to real MITRE ATT&CK techniques with validated IDs and URLs. Features a chunked pipeline supporting files up to 50MB with overlap-aware splitting, using the MITRE attack-python STIX library to dynamically build AI prompts from live ATT&CK data and validate technique IDs at runtime.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>FastAPI</span>
-                            <span>Claude AI</span>
-                            <span>MITRE ATT&CK</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 1 -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2015&q=80" alt="Social Media Visualization">
-                    </div>
-                    <div class="project-content">
-                        <h3>Social Media Visualization Tool</h3>
-                        <p>Collaborated in a team to design and develop a social media visualization tool, leveraging Java arrays, stacks, lists, and queues for robust data management and processing. Implemented custom comparators and lists to enable dynamic data sorting, complemented by a user-friendly GUI for effective data presentation.</p>
-                        <div class="project-tech">
-                            <span>Java</span>
-                            <span>Data Structures</span>
-                            <span>GUI</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="CTF Challenge">
-                    </div>
-                    <div class="project-content">
-                        <h3>QR Code Security Scanner</h3>
-                        <p>Developed a QR code scanner with security features to protect users from QR code based attacks.</p>
-                        <div class="project-tech">
-                            <span>Java</span>
-                            <span>JavaScript</span>
-                            <span>Docker</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://yashkantheti.github.io/web-qr-scanner/" class="btn btn-sm">View Details</a>
-                            <a href="https://github.com/YashKantheti/web-qr-scanner" class="btn btn-sm btn-outline">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Bucket AI Budgeting">
-                    </div>
-                    <div class="project-content">
-                        <h3>Bucket AI - Budgeting Artificial Intelligence Tool</h3>
-                        <p>Implemented a PDF analysis pipeline using pdfplumber for structured transaction extraction, contributed to the front-end interface utilizing JavaScript, Bootstrap, and Chart.js, and integrated the Gemini API via OpenRouter to enable AI-driven financial data processing and insights within the budgeting platform.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>JavaScript</span>
-                            <span>Bootstrap</span>
-                            <span>Chart.js</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://devpost.com/software/vellum" class="btn btn-sm">View Details</a>
-                            <a href="https://github.com/ifa-s/budgeting-proj" class="btn btn-sm btn-outline">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live Security Feed Section -->
-    <section id="ai-feed" class="security-feed">
-        <div class="container">
-            <div class="section-header">
-                <h2>AI Pulse</h2>
-                <p class="section-description">Live feed of developments across the AI landscape</p>
-            </div>
-            <div class="ai-visualizer animate-on-scroll">
-                <div class="visualizer-header">
-                    <div class="stats">
-                        <div class="stat-item">
-                            <span class="stat-value" id="feed-count">0</span>
-                            <span class="stat-label">Updates Tracked</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value" id="country-count">0</span>
-                            <span class="stat-label">Organizations</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value" id="type-count">0</span>
-                            <span class="stat-label">AI Domains</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="visualizer-container">
-                    <div class="feed-log" style="width: 100%; max-width: 100%;">
-                        <h3><i class="fas fa-robot"></i> Recent AI Developments</h3>
-                        <div class="log-container" id="feed-log">
-                            <!-- Feed entries injected by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Get In Touch</h2>
-                <p class="section-description">Interested in collaboration? Let's connect.</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info animate-on-scroll">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always interested in hearing about new projects, opportunities, and AI challenges. Whether you have a question or just want to say hi, feel free to reach out!</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <p>yashk@vt.edu</p>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-linkedin"></i>
-                            <p>linkedin.com/in/yashkantheti</p>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-github"></i>
-                            <p>github.com/yashkantheti</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Yash Kantheti. All rights reserved.</p>
-            <div class="footer-social">
-                <a href="https://github.com/YashKantheti" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/yashkantheti" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:yashk@vt.edu"><i class="fas fa-envelope"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="wrap contact-inner"><div><p class="eyebrow"><span class="status-dot"></span> GOOD IDEAS START WITH A CONVERSATION</p><h2 id="contact-title">Let’s build something<br>with <em>lift.</em></h2><p>AI projects, research, interesting problems — or a conversation about planes.<br>I’d love to hear what you’re thinking.</p><a class="contact-email" href="mailto:yashk@vt.edu">yashk@vt.edu <span aria-hidden="true">↗</span></a><button class="copy-email" id="copy-email" type="button" aria-label="Copy email address">Copy email</button><span id="copy-status" class="copy-status" role="status"></span></div><svg class="contact-plane" viewBox="0 0 200 200" fill="none" aria-hidden="true"><path d="m26 91 149-62-59 149-25-65zM91 113l84-84M91 113l-4 40 20-16" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M61 155c-56 51-84-9-49-13" stroke="currentColor" stroke-dasharray="3 7" stroke-width="1.3"/></svg></div></section>
+  </main>
+  <footer class="footer wrap"><a class="brand-mark" href="#home" aria-label="Back to top">yk<span>.</span></a><p>© <span id="year">2026</span> Yash Kantheti. Built with curiosity.</p><div><a href="https://github.com/YashKantheti" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://linkedin.com/in/yashkantheti" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="#home">Back to top ↑</a></div></footer>
 </body>
 </html>
