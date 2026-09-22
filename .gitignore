@@ -1,0 +1,4 @@
+.artifacts/
+.preview/
+__pycache__/
+*.pyc
