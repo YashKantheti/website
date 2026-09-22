@@ -10,7 +10,9 @@ From this folder, run:
 python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Open http://127.0.0.1:8000. There is no build step or package installation. Opening `index.html` directly also works, except that clipboard access depends on browser security settings.
+Open http://127.0.0.1:8000. Local preview needs no build step or package installation. Opening `index.html` directly also works, except that clipboard access depends on browser security settings.
+
+For Sites deployment, commit the source and run `python tools/package_site.py`. This creates `.artifacts/site.tar` from that exact commit, placing only public assets under `dist/` and including the hosting manifest. It excludes Git history, development files, and the GitHub Pages domain file.
 
 ## Files
 
